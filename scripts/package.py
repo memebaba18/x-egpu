@@ -1,25 +1,33 @@
 from pathlib import Path
+import json
 from zipfile import ZIP_DEFLATED, ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT / "release" / "x-egpu.zip"
-FILES = (
+package = json.loads((ROOT / "package.json").read_text())
+version = package.get("version", "0.0.0")
+output_name = f"x-egpu-v{version}.zip"
+output_path = ROOT / "release" / output_name
+
+files = (
+    ROOT / "package.json",
     ROOT / "plugin.json",
     ROOT / "main.py",
+    ROOT / "README.md",
+    ROOT / "LICENSE",
     ROOT / "dist" / "index.js",
 )
 
-missing = [str(path.relative_to(ROOT)) for path in FILES if not path.is_file()]
+missing = [str(path.relative_to(ROOT)) for path in files if not path.is_file()]
 if missing:
     raise SystemExit(
         "Cannot package plugin; required build files are missing: "
         + ", ".join(missing)
-        + ". Run 'npm run build' first."
+        + ". Run 'pnpm run build' first."
     )
 
-OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-with ZipFile(OUTPUT, "w", compression=ZIP_DEFLATED) as archive:
-    for path in FILES:
+output_path.parent.mkdir(parents=True, exist_ok=True)
+with ZipFile(output_path, "w", compression=ZIP_DEFLATED) as archive:
+    for path in files:
         archive.write(path, path.relative_to(ROOT).as_posix())
 
-print(f"Created {OUTPUT.relative_to(ROOT)}")
+print(f"Created {output_path.relative_to(ROOT)}")
