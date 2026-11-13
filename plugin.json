@@ -1,0 +1,10 @@
+{
+  "name": "x-egpu",
+  "author": "memebaba18",
+  "flags": ["debug"],
+  "publish": {
+    "tags": ["utility"],
+    "description": "External GPU helper for the Steam Deck.",
+    "screenshots": []
+  }
+}
