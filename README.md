@@ -1,31 +1,30 @@
 # x-egpu
 
-A Decky plugin template for toggling and managing eGPU behavior on the Steam Deck.
+A Decky plugin starter for an eGPU status and control interface on Steam Deck.
+The current UI is a scaffold; GPU detection and switching are not implemented.
 
-## What this includes
+## Build an installable ZIP
 
-- Decky plugin shell
-- GPU mode dropdown
-- Detect eGPU button
-- Apply GPU mode button
-- Quick-switch toggle placeholder
+Requirements: Node.js/npm and Python 3.
 
-## Development
+```bash
+npm install
+npm run package
+```
 
-1. Install dependencies:
-   npm install
-2. Start the build in watch mode:
-   npm run dev
-3. Build for production:
-   npm run build
+The command builds the frontend and creates `release/x-egpu.zip`. The archive
+contains the plugin manifest, Decky backend entry point, and compiled frontend.
+Install the ZIP using Decky Loader's plugin installation flow. The plugin is a
+UI-only scaffold for now: its Detect and Apply buttons do not control or inspect
+hardware yet.
 
-## Notes
+To build the frontend without packaging it, run `npm run build`. To check
+TypeScript, run `npm run lint`.
 
-This is a starter implementation. The actual eGPU switching logic still needs to be connected to your real power-management or display-switching commands for your specific setup.
-
-## Folder structure
+## Project files
 
 - `src/index.tsx` – plugin UI entry point
+- `main.py` – minimal Decky backend entry point
 - `plugin.json` – Decky plugin metadata
-- `webpack.config.js` – bundling config
-- `dist/` – built plugin output
+- `webpack.config.js` – frontend bundler configuration
+- `scripts/package.py` – creates the install ZIP from build artifacts
