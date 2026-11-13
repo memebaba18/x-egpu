@@ -15,6 +15,9 @@ npm run package
 This builds the frontend using Decky's plugin build configuration and creates
 `release/x-egpu.zip`. Install the ZIP using Decky Loader's plugin install flow.
 
+The frontend uses inline styles because Decky's Rollup configuration does not
+currently process standalone CSS imports.
+
 ## Development
 
 ```bash

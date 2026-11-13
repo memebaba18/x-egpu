@@ -9,7 +9,6 @@ import {
 } from "@decky/ui";
 import { useState } from "react";
 import { FaBolt } from "react-icons/fa";
-import "./style.css";
 
 const eGpuModes = ["auto", "internal", "external"] as const;
 type EGpuMode = (typeof eGpuModes)[number];
@@ -35,7 +34,9 @@ const Content = () => {
   return (
     <PanelSection title="x-egpu">
       <PanelSectionRow>
-        <div className="x-egpu__status">{status}</div>
+        <div style={{ color: "#dfe7ff", fontSize: "12px", padding: "4px 0", whiteSpace: "pre-wrap" }}>
+          {status}
+        </div>
       </PanelSectionRow>
 
       <PanelSectionRow>
