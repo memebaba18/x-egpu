@@ -5,25 +5,37 @@ The current UI is a scaffold; GPU detection and switching are not implemented.
 
 ## Build an installable ZIP
 
-Requirements: Node.js/npm and Python 3.
+Use Node.js 16.14 or newer and pnpm 9, as recommended by the Decky plugin template.
 
 ```bash
-npm install
-npm run package
+corepack enable
+pnpm install
+pnpm run package
 ```
 
-This builds the frontend using Decky's plugin build configuration and creates
-`release/x-egpu.zip`. Install the ZIP using Decky Loader's plugin install flow.
+This builds the frontend with Decky's Rollup preset and creates
+`release/x-egpu.zip`.
 
-The frontend uses inline styles because Decky's Rollup configuration does not
-currently process standalone CSS imports.
+To refresh the Decky UI dependency to the newest compatible published version,
+run:
+
+```bash
+pnpm update @decky/ui --latest
+pnpm install
+pnpm run package
+```
 
 ## Development
 
 ```bash
-npm run dev
-npm run lint
+pnpm run dev
+pnpm run lint
 ```
+
+Some install warnings may still mention deprecated packages such as `glob` or
+`inflight`. These are transitive dependencies of the build tooling; updating the
+plugin's direct dependencies may not remove them. Avoid forcing overrides unless
+upstream Decky tooling provides a compatible update.
 
 ## Project files
 
