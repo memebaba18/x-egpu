@@ -12,14 +12,7 @@ npm install
 npm run package
 ```
 
-The command builds the frontend and creates `release/x-egpu.zip`. The archive
-contains the plugin manifest, Decky backend entry point, and compiled frontend.
-Install the ZIP using Decky Loader's plugin installation flow. The plugin is a
-UI-only scaffold for now: its Detect and Apply buttons do not control or inspect
-hardware yet.
-
-To build the frontend without packaging it, run `npm run build`. To check
-TypeScript, run `npm run lint`.
+This builds the frontend and creates `release/x-egpu.zip`.
 
 ## Project files
 
@@ -27,4 +20,4 @@ TypeScript, run `npm run lint`.
 - `main.py` – minimal Decky backend entry point
 - `plugin.json` – Decky plugin metadata
 - `webpack.config.js` – frontend bundler configuration
-- `scripts/package.py` – creates the install ZIP from build artifacts
+- `scripts/package.py` – creates the ZIP archive

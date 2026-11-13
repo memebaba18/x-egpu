@@ -27,6 +27,7 @@ module.exports = {
   externals: {
     react: 'commonjs react',
     'react-dom': 'commonjs react-dom',
-    'decky-frontend-lib': 'commonjs decky-frontend-lib',
+    '@decky/api': 'commonjs @decky/api',
+    '@decky/ui': 'commonjs @decky/ui',
   },
 };

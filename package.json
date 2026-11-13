@@ -9,10 +9,11 @@
     "package": "npm run build && python3 scripts/package.py"
   },
   "devDependencies": {
+    "@decky/api": "^1.0.0",
+    "@decky/ui": "^1.0.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "css-loader": "^7.1.0",
-    "decky-frontend-lib": "^3.0.0",
     "style-loader": "^4.0.0",
     "ts-loader": "^9.1.0",
     "typescript": "^5.6.2",
